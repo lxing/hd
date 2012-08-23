@@ -1,0 +1,147 @@
+<!doctype html>
+<html><head>
+  <meta charset="utf-8">
+  <title>sas dashboard</title>
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/rickshaw.min.css">
+  <script src="/js/jquery-1.7.2.min.js"></script>
+  <script src="/js/d3.v2.min.js"></script>
+  <script src="/js/rickshaw.min.js"></script>
+  <script src="/js/underscore-1.3.3.min.js"></script>
+</head><body>
+<script src="/js/dashboard.js"></script>
+<script>
+
+$(function() {
+  graph("couldnt_contact_graph", <%= couldnt_contact_data %>, "errors");
+  graph("couldnt_contact_normalied_graph", <%= couldnt_contact_normalized_data %>, "error %");
+  graph("different_isauthorized_graph", <%= different_isauthorized_data %>, "errors");
+  graph("other_errors_graph", <%= other_errors_data %>, "errors");
+  graph("client_latency_graph", <%= client_latency_data %>, "latency");
+  graph("server_latency_graph", <%= server_latency_data %>, "latency");
+  graph("authorize_counts_graph", <%= authorize_counts_data %>, "authorizations");
+});
+
+</script>
+
+<table width=99%>
+  <tr width=100%>
+
+    <td style="vertical-align:top" width="99%">
+      <div id="latency">
+        <div id="authorize_counts_graph_container">
+          <div class="hastur_float_middle hastur_text">sas authorize / sec</div>
+          <div class="hastur_chart_title_bracket"></div>
+          <div class="hastur_padded_container">
+            <div id="authorize_counts_graph"></div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+  </tr>
+</table>
+
+<table width=99%>
+  <tr width=100%>
+
+    <td style="vertical-align:top" width="49%">
+      <div id="latency">
+        <div id="couldnt_contact_graph_container">
+          <div class="hastur_float_middle hastur_text">couldn't contact errors / sec</div>
+          <div class="hastur_chart_title_bracket"></div>
+          <div class="hastur_padded_container">
+            <div id="couldnt_contact_graph"></div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+    <td width=2%></td>
+
+    <td style="vertical-align:top" width="49%">
+      <div id="error">
+        <div id="couldnt_contact_normalized_graph_container">
+          <div class="hastur_float_middle hastur_text">couldnt' contact errors / authorizes %</div>
+          <div class="hastur_chart_title_bracket"></div>
+          <div class="hastur_padded_container">
+            <div id="couldnt_contact_normalied_graph"></div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+  </tr>
+</table>
+
+<table width=99%>
+  <tr width=100%>
+
+    <td style="vertical-align:top" width="49%">
+      <div id="latency">
+        <div id="different_isauthorized_graph_container">
+          <div class="hastur_float_middle hastur_text">different isauthorized errors / hr</div>
+          <div class="hastur_chart_title_bracket"></div>
+          <div class="hastur_padded_container">
+            <div id="different_isauthorized_graph"></div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+    <td width=2%></td>
+
+    <td style="vertical-align:top" width="49%">
+      <div id="latency">
+        <div id="other_errors_graph_container">
+          <div class="hastur_float_middle hastur_text">other errors / hr</div>
+          <div class="hastur_chart_title_bracket"></div>
+          <div class="hastur_padded_container">
+            <div id="other_errors_graph"></div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+  </tr>
+</table>
+
+
+<table width=99%>
+  <tr width=100%>
+
+    <td style="vertical-align:top" width="99%">
+      <div id="latency">
+        <div id="client_latency_graph_container">
+          <div class="hastur_float_middle hastur_text">client latency ms (top 50,90,95)</div>
+          <div class="hastur_chart_title_bracket"></div>
+          <div class="hastur_padded_container">
+            <div id="client_latency_graph"></div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+  </tr>
+</table>
+
+<table width=99%>
+  <tr width=100%>
+
+    <td style="vertical-align:top" width="99%">
+      <div id="latency">
+        <div id="server_latency_graph_container">
+          <div class="hastur_float_middle hastur_text">server latency ms (top 50,90,95)</div>
+          <div class="hastur_chart_title_bracket"></div>
+          <div class="hastur_padded_container">
+            <div id="server_latency_graph"></div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html><head>
+  <meta charset="utf-8">
+  <title>player dashboard</title>
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/rickshaw.min.css">
+  <script src="/js/jquery-1.7.2.min.js"></script>
+  <script src="/js/d3.v2.min.js"></script>
+  <script src="/js/rickshaw.min.js"></script>
+  <script src="/js/underscore-1.3.3.min.js"></script>
+</head><body>
+<script src="/js/dashboard.js"></script>
+<script>
+
+$(function() {
+  graph("player_loads_graph", <%= loads_data %>, "loads");
+  graph("player_displays_graph", <%= displays_data %>, "displays");
+  graph("module_failures_graph", <%= module_failures_data %>, "failures");
+  graph("module_failures_normalized_graph", <%= module_failures_normalized_data %>, "failure %");
+});
+
+</script>
+
+<table width=99%>
+  <tr width=100%>
+
+    <td style="vertical-align:top" width="49%">
+      <div id="latency">
+        <div id="player_loads_graph_container">
+          <div class="hastur_float_middle hastur_text">player loads / sec</div>
+          <div class="hastur_chart_title_bracket"></div>
+          <div class="hastur_padded_container">
+            <div id="player_loads_graph"></div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+    <td width=2%></td>
+
+    <td style="vertical-align:top" width="49%">
+      <div id="error">
+        <div id="player_displays_graph_container">
+          <div class="hastur_float_middle hastur_text">player displays / sec</div>
+          <div class="hastur_chart_title_bracket"></div>
+          <div class="hastur_padded_container">
+            <div id="player_displays_graph"></div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+  </tr>
+</table>
+
+<table width=99%>
+  <tr width=100%>
+
+    <td style="vertical-align:top" width="49%">
+      <div id="latency">
+        <div id="module_failures_graph_container">
+          <div class="hastur_float_middle hastur_text">module failures / sec</div>
+          <div class="hastur_chart_title_bracket"></div>
+          <div class="hastur_padded_container">
+            <div id="module_failures_graph"></div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+    <td width=2%></td>
+
+    <td style="vertical-align:top" width="49%">
+      <div id="error">
+        <div id="module_failures_normalized_graph_container">
+          <div class="hastur_float_middle hastur_text">module failures / load %</div>
+          <div class="hastur_chart_title_bracket"></div>
+          <div class="hastur_padded_container">
+            <div id="module_failures_normalized_graph"></div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+  </tr>
+</table>
+
+</body>
+</html>
